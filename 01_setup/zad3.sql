@@ -27,3 +27,13 @@ CREATE TABLE ksiegowosc.premia (
     rodzaj VARCHAR(50),
     kwota NUMERIC(10,2)
 ) COMMENT = 'tabela z informacjami o premiach';
+
+
+CREATE TABLE ksiegowosc.wynagrodzenie (
+    id_wynagrodzenia SERIAL PRIMARY KEY,
+    data DATE NOT NULL,
+    id_pracownika INT REFERENCES ksiegowosc.pracownicy(id_pracownika),
+    id_godziny INT REFERENCES ksiegowosc.godziny(id_godziny),
+    id_pensji INT REFERENCES ksiegowosc.pensja(id_pensji),
+    id_premii INT REFERENCES ksiegowosc.premia(id_premii)
+) COMMENT = 'tabela z informacjami o pensjach';
